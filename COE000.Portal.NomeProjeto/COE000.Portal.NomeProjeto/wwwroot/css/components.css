@@ -1,0 +1,198 @@
+/* -------------------- NavBar -------------------- */
+
+.userPicture {
+  display: flex;
+  justify-content: center;
+}
+
+.userPicture img {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  padding: 3px;
+  border: 2px solid var(--themeColor);
+}
+
+.userName {
+  display: flex;
+  justify-content: center;
+}
+
+.userName p a {
+  font-weight: bold;
+}
+
+.navItem {
+  margin-top: calc(8vh);
+  display: flex;
+  justify-content: center;
+}
+
+#homeScreen #menu .homeScreen, #historicScreen #menu .historicScreen
+, #rpaPreferenceScreen #menu .rpaPreferenceScreen
+, #preferenceScreen #menu .preferenceScreen {
+    font-weight: bold;
+    border-bottom: 1px solid var(--themeColor);
+}
+
+.navList {
+  padding: 0;
+}
+
+.navList li {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+li i {
+  color: black;
+  font-size: 20px;
+}
+
+.navLink:hover {
+  border-bottom: 1px solid var(--themeColor);
+}
+
+.logoutArea {
+  margin-top: calc(8vh);
+  display: flex;
+  justify-content: center;
+}
+
+.buttonExit {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+
+.buttonExit:hover {
+  color: var(--themeColor);
+  transition: 0.3s;
+}
+
+/* -------------------- Default layout form modals -------------------- */
+
+.headerPostModal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: 1px solid ;
+}
+
+.modalBodyBackground {
+  background-color: var(--modalBackground);
+}
+
+.modalFormData input {
+  width: 100%;
+}
+
+.submitButton {
+  padding: 20px 10% 5px 10%;
+}
+
+/* ------------------------- NotifyModal ------------------------- */
+
+.notifyModalHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin: 6px;
+}
+
+.notifyModalBody {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notifyModalBody i {
+  font-size: 80px;
+  margin: 10px 0px
+}
+
+.bxs-check-circle {
+  color: var(--sucess);
+}
+
+.bxs-x-circle {
+  color: var(--error);
+}
+
+.bxs-error-circle {
+  color: var(--warning);
+}
+
+.notifyModalBody label {
+  color: black !important;
+  margin: 10px 0px
+}
+
+/* ------------------------------ LoadModal ------------------------------- */
+
+.loadContainer {
+  text-align: center;
+  padding: 28px 43px;
+}
+
+.loadIconRow {
+  display: grid;
+  justify-content: center;
+  margin: 8% 0;
+}
+
+.loadIconRow i {
+  font-size: 70px;
+}
+
+/* --------------------------- RpaUserUpdateModal --------------------------- */
+
+.modalCenter {
+  padding: 8px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/* ----------------------------- SearchButton ----------------------------- */
+
+.searchButton {
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.searchButton i {
+  text-align: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+}
+
+/* ----------------------------- ScrollBar ----------------------------- */
+
+::-webkit-scrollbar {
+  width: 9px;
+  border-radius: 0 15px 15px 0;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2)
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0 0 0 0;
+}

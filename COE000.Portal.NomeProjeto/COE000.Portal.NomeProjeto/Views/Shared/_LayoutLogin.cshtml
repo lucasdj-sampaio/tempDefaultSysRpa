@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>@ViewData["Title"] - Portal FirstData</title> 
+
+  <partial name="../Modules/_HeadDefaultImport"/>
+  <link rel="stylesheet" href="~/css/acess.css" asp-append-version="true" />
+
+</head>
+<body>
+  @RenderBody()
+      
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,11 @@
+.menuNav {
+   position: static !important;
+   padding: 3px 10px;
+   background-color: var(--backGround) !important;
+}
+
+.menuNav img {
+    width: 100px;
+    height: 73px;
+    border-bottom: 3px solid var(--themeColor);
+}

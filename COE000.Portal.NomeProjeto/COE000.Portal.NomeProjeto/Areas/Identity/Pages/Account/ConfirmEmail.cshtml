@@ -1,0 +1,40 @@
+﻿@page
+@using COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
+@model ConfirmEmailModel
+@{
+  ViewData["Title"] = "Confirmação de e-mail";
+}
+
+<main>
+  <div class="container-fluid">
+    <div class="row rowCenter">
+      
+      <div class="col-12 logoAndLine">
+        <img src="~/resource/logo.png">
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-8 confirmCard shadow">
+        <h1>@Model.Notify.Message</h1>
+        
+        <div class="confirmContentCard">
+          @{
+            if (@Model.Notify.IsSucess())
+            {
+              <img src="~/resource/ConfirmedEmailUDraw.svg" />
+            }
+            else
+            {
+              <img src="~/resource/ConfirmedEmailErrorUDraw.svg" />            
+            }
+          }
+
+          <div class="col-sm-12 col-md-12 col-lg-8 confirmContentP">
+            <p>Acesse o sistema - 
+              <a asp-page="./Login">Clique aqui!</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

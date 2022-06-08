@@ -1,0 +1,76 @@
+﻿@page
+@using COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
+@model LoginModel
+
+@{
+  ViewData["Title"] = "Acesso";
+}
+
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-12 loginArea">
+        <div class="col-sm-10 col-md-8 col-lg-8">
+          <div class="groupLogo">
+            <div class="row">
+              <img class="logoImg" src="~/resource/logo.png">
+            </div>
+
+            <div class="row">
+              <hr class="divisor">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="groupAcess shadow">
+              <form id="account" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="loginInputs">
+                  <div class="form-floating">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+                    <label asp-for="Input.Email" class="form-label"></label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                  </div>
+
+                  <div class="form-floating">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password"
+                      aria-required="true" />
+                    <label asp-for="Input.Password" class="form-label"></label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="checkbox">
+                    <label asp-for="Input.RememberMe" class="form-label">
+                      <input class="form-check-input" asp-for="Input.RememberMe" />
+                      @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                  </div>
+                </div>
+
+                <div class="acess">
+                  <button id="login-submit" type="submit" class="defaultButton shadow">Entrar</button>
+                </div>
+
+                <div class="subscribe">
+                  <p>Esqueceu sua senha?
+                    <a id="forgot-password" asp-page="./ForgotPassword">Redefinir senha!</a>
+                  </p>
+                  <p>Novo usuário?
+                    <a asp-page="./Register">Clique aqui!</a>
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

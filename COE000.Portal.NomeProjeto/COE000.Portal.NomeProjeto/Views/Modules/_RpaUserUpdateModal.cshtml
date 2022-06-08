@@ -1,0 +1,55 @@
+<div class="modal fade bd-example-modal-lg" id="rpaUserModal" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="headerModal headerPostModal">
+				<h4>Atualização de credencias do RPA!</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body modalBodyBackground">
+				<div class="modalReturn">
+					<div class="row">
+						<div class="col-12">
+							@using (Html.BeginForm("UpdateRpaCredential", "RpaPreference"
+								, FormMethod.Post, new { @class="modalFormData", autocomplete="off" }))
+							{
+								<input id="ModalUserId" type="text" name="Id" hidden/>
+
+								<div class="row modalCenter">
+									<div class="col-sm-12 col-md-12 col-lg-5">
+										<select class="form-select searchSelect" name="EnvironmentId">
+											@{
+												foreach (var value in Model.SelectValues)
+												{
+													<option value="@(value.Id)">@value.EnvironmentName</option>
+												}
+											}
+										</select>
+									</div>
+
+									<div class="col-sm-12 col-md-12 col-lg-7">
+										<input class="defaultInput" name="UserName" id="ModalUserName" type="text" placeholder="Nome do Usuário"/>
+									</div>
+								</div>
+
+								<div class="row modalCenter">
+									<div class="col-sm-12 col-md-12 col-lg-4">
+										<input class="defaultInput" id="ModalPassword" name="Password" type="password" placeholder="Senha" autocomplete="new-password" />
+									</div>
+
+									<div class="col-sm-12 col-md-12 col-lg-8">
+										<input class="defaultInput" id="ModalUserUrl" type="text" placeholder="Link do site" name="Url" />
+									</div>
+								</div>
+								
+								<div class="row submitButton">
+									<input class="btn btn-outline-success" value="Atualizar" type="submit"/>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "FileColumns": [
+    "DATA",
+    "DOC",
+    "EC",
+    "TELEFONE"
+  ],
+
+  "CsvColumnsFormatRow" : "Data; Documento; Número de telefone; EC; Observação; Data de processamento RPA;"
+}

@@ -1,0 +1,46 @@
+@using Microsoft.AspNetCore.Identity
+@using COE000.Portal.NomeProjeto.Areas.Identity.Data
+@inject UserManager<IncriseUserModel> UserManager
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+  <div class="offcanvas-header">
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <div class="userPicture">
+      <img src="~/resource/profileUser.png">
+    </div>
+
+    <div class="userName">
+      <p>Bem vindo!
+        <a>@UserManager.GetUserAsync(User).Result.Nick</a>
+      </p>
+    </div>
+
+    <div id="menu" class="col-sm-12 col-md-9 col-lg-12 navItem">
+      <ul class="navList">
+        <li>
+          <i class='bx bx-task'></i>
+          <a class="navLink homeScreen" accesskey="" asp-controller="Home" asp-action="Index">
+            Acompanhamento
+          </a>
+        </li>
+
+        <li>
+          <i class='bx bx-bot'></i>
+          <a class="navLink rpaPreferenceScreen" asp-controller="RpaPreference" asp-action="RpaPreference">
+            Preferencias RPA
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="logoutArea">
+      <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button id="logout" type="submit" class="buttonExit">Sair</button>
+      </form>
+    </div>
+  </div>
+</div>

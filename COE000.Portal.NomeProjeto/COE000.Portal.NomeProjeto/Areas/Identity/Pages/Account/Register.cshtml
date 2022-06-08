@@ -1,0 +1,81 @@
+﻿@page
+@using COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
+@model RegisterModel
+
+@{
+  ViewData["Title"] = "Se Cadastre!";
+}
+
+<main>
+  <div class="container-fluid">
+
+    <div class="row registerLogoRegion">
+      <div class="col-sm-11 col-md-10 col-lg-8">
+        <div class="row">
+          <img class="logoImg" src="~/resource/logo.png">
+        </div>
+
+        <div class="row">
+          <hr class="RegisterDivisor">
+        </div>
+      </div>
+    </div>
+
+    <div class="row registerContentRegion">
+      <div class="col-sm-11 col-md-10 col-lg-8 backgroundContent shadow">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+          <div class="form-floating">
+            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
+            <label asp-for="Input.Email"></label>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+          </div>
+
+          <div class="row dubleImput">
+            <div class="col-sm-12 col-md-7 col-lg-7 form-floating">
+              <input asp-for="Input.Nick" class="form-control" aria-required="true" />
+              <label class="marginForced" asp-for="Input.Nick"></label>
+            </div>
+
+            <div class="col-sm-12 col-md-5 col-lg-5 form-floating">
+              <select asp-for="Input.Gender" class="form-control form-select" aria-required="true">
+                <option value="M">Masculino</option>
+                <option value="F" selected>Feminino</option>
+              </select>
+              <label asp-for="Input.Gender"></label>
+            </div>
+          </div>
+
+
+          <div class="form-floating">
+            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+            <label asp-for="Input.Password"></label>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+          </div>
+
+          <div class="form-floating">
+            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password"
+              aria-required="true" />
+            <label asp-for="Input.ConfirmPassword"></label>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+          </div>
+
+          <div class="buttonPosition">
+            <button type="submit" class="defaultButton shadow">Registrar-se</button>
+          </div>
+
+          <div class="sigIn">
+            <p>Já possui cadastro?
+              <a asp-page="./Login">Faça o login aqui!</a>
+            </p>
+          </div>                  
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

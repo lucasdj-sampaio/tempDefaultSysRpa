@@ -1,0 +1,22 @@
+p, a, textarea, h1, h2, h3, h4, h5, h6, span, label, input, option {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.defaultButton {
+    background-color: var(--themeColor) !important;
+    text-decoration: none;
+    padding: 8px;
+    border: none !important;
+    color: white;
+}
+
+.defaultButton:hover {
+    background-color: var(--themeColor2);
+}
+
+.defaultInput {
+    border-radius: 5px;
+    border: none;
+    margin-right: 8px;
+    padding: 9px;
+}

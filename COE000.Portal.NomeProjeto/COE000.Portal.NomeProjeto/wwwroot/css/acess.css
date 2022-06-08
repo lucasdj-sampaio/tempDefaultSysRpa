@@ -1,0 +1,220 @@
+body {
+    background-color: var(--backGround);
+}
+
+/* ------------------------------ Login.cshtml ------------------------------ */
+
+.loginArea {
+    display: flex;
+    justify-content: center;
+}
+
+.containerImage img {
+    max-width: Calc(100vw - 150%);
+    width: auto;
+    min-height: Calc(100vh);
+    height: auto;
+    box-shadow: 9px 0px 24px 20px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    opacity: 76%;
+}
+
+.groupLogo {
+    margin-top: 12%;
+}
+
+.logoImg {
+    width: 118px;
+    height: 59px;
+}
+
+.divisor {
+    margin: 5px 7px;
+    border-radius: 3px;
+    width: 54%;
+    border: 1px solid var(--themeColor);
+    opacity: 1;
+}
+
+.groupAcess {
+    margin-top: 30px;
+    background-color: white;
+    padding: 15px 34px;
+    border-radius: 30px;
+}
+
+.loginInputs input {
+    margin-top: 20px;
+}
+
+.checkbox {
+    margin-top: 30px;
+}
+
+.acess {
+    display: flex;
+    justify-content: center;
+}
+
+.acess button {
+    border-radius: 24px;
+    width: 221px;
+    margin-top: 40px;
+    margin-bottom: 20px
+}
+
+.subscribe {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.subscribe a {
+    text-decoration: underline;
+    color: var(--themeColor2);
+}
+    
+/* ---------------- Register.cshtml && ResetPassword.cshtml ---------------- */
+
+.registerLogoRegion {
+    display: flex;
+    justify-content: center;
+    margin-top: calc(7vh);
+}
+
+.RegisterDivisor {
+    width: 34%;
+    border-radius: 3px;
+    border: 1px solid var(--themeColor);
+    opacity: 1;
+    margin: 5px 7px;
+}
+
+.registerContentRegion {
+    display: flex;
+    justify-content: center;
+}
+
+.backgroundContent {
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 29px 34px;
+}
+
+.backgroundContent input {
+    margin: 10px 0;
+}
+
+.dubleImput {
+    display: flex;
+    align-items: center;
+}
+
+.dubleImput label {
+    margin-left: 12px;
+}
+
+.dubleImput div:nth-child(1) label {
+    margin-top: 6px;
+}
+
+.buttonPosition button {
+    margin: 3% 0px;
+    border-radius: 24px;
+    padding: 13px;
+    width: 221px;
+}
+
+.buttonPosition {
+    display: flex;
+    justify-content: center;
+}
+
+.sigIn p {
+    margin-bottom: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.sigIn a {
+    text-decoration: underline;
+    color: var(--themeColor2);
+}
+
+/* ---------- RegisterConfirmation.cshtml, ConfirmEmail.cshtml ---------- */
+
+.rowCenter {
+    display: flex;
+    justify-content: center;
+}
+
+.logoAndLine {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.logoAndLine img { 
+    width: 100px;
+    height: 73px;
+    border-bottom: 3px solid var(--themeColor);
+}
+
+.confirmCard {
+    border-radius: 15px;
+    background-color: white;
+}
+
+.confirmCard h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.confirmCard p {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.confirmContentCard {
+    display: flex;
+    margin-top: 60px;
+}
+
+.confirmCard img {
+    max-height: calc(50vh);
+    max-width: calc(50vw);
+}
+
+.confirmContentP {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    min-width: calc(65.4vw);
+    height: calc(49vh);
+}
+
+.confirmContentP p {
+    text-align: center;
+    font-size: 15px;
+}
+
+.confirmContentP a {
+    text-decoration: underline;
+    color: var(--themeColor2);
+}
+
+/* ---------- ForgotPassword.cshtml ---------- */
+
+.confirmCard input {
+    margin: 20px 0;
+}

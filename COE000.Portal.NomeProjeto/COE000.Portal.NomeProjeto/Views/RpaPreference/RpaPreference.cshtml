@@ -1,0 +1,78 @@
+﻿@model dynamic
+
+@{
+	ViewData["Title"] = "Preferencias | RPA";
+	ViewData["BodyId"] = "rpaPreferenceScreen";
+	ViewData["NotFundMessage"] = "Nenhum usuário encontrado!";
+}
+
+<div class="row">
+	<div class="col-sm-12 col-md-4 col-lg-4">
+		<div class="card-header">
+			<h1 class="subtitle">PREFERENCIAS | RPA</h1>
+		</div>
+	</div>
+
+	<div class="col-sm-12 col-md-5 col-lg-5 contentCalendare">
+		@using (Html.BeginForm("GetRpaUserWithFilter", "RpaPreference"
+			, FormMethod.Get, new { @class="filterForm" }))
+		{
+			<input name="InputedCriterie" class="defaultInput" placeholder="Pesquisar"/>
+			
+			<button class="defaultButton searchButton" type="submit"><i class='bx bx-search'></i></button>
+		}
+  </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12 col-md-9 col-lg-9 card-body backGroundItem scrollCard">
+		<div class="userCards">
+			@{
+				if (Model.UserCardGroup.Count == 0)
+				{
+					<partial name="../Modules/_NotFundItem.cshtml" />
+				}
+				else
+				{
+					@foreach (var rpaUser in Model.UserCardGroup)
+					{
+						<div id="@(rpaUser.Id)" class="col-sm-12 col-md-4 col-lg-4 profileCard shadow">
+							<div class="backgroundIconUser">
+								<i class="bx bxs-bot"></i>
+							</div>
+							
+							<div class="buttonPositon">
+								<div class="editButton" onClick="fillRpaCredentialModal('@(rpaUser.Id)', '#rpaUserModal')">
+									<i class="bx bxs-pencil"></i>
+								</div>
+							</div>
+
+							<div class="userCardContext">
+								<p>
+									<label class="boldedGreyText">Usuário: </label> 
+									<label id="UserName">@rpaUser.UserName</label>
+								</p>
+								
+								<p hidden>
+									<label class="boldedGreyText">Url: </label>
+									<label id="Url" >@rpaUser.Url</label>
+								</p>
+ 
+								<div class="enOrPermRow">
+									<label>Ambiente:</label>
+
+									<div class="envOrPermStatus">
+										<i class="bx bx-globe-alt"></i>
+										<label>@rpaUser.Environment.EnvironmentName</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					}
+				}
+			}
+		</div>
+	</div>
+</div>
+
+<partial name="../Modules/_RpaUserUpdateModal.cshtml" />
