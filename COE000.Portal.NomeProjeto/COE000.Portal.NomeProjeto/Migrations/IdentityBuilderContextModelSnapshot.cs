@@ -17,12 +17,12 @@ namespace COE000.Portal.NomeProjeto.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.3")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -47,8 +47,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("Nick")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
@@ -96,23 +95,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.EnvironmentModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("EnvironmentName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EnvironmentModel");
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.FunctionTypeModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Models.Entity.FunctionTypeModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,7 +114,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
                     b.ToTable("FunctionTypeModel");
                 });
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.HistoricModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Models.Entity.HistoricModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,78 +126,19 @@ namespace COE000.Portal.NomeProjeto.Migrations
                     b.Property<int>("FunctionTypeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Observation")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FunctionTypeId")
-                        .IsUnique();
+                    b.HasIndex("FunctionTypeId");
 
                     b.HasIndex("UserId");
 
                     b.ToTable("HistoricModel");
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.RpaCredentialModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("EnvironmentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EnvironmentId")
-                        .IsUnique();
-
-                    b.ToTable("RpaCredentialModel");
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.StatusModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DateOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("EnvironmentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FileName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("HistoricId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Observation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EnvironmentId")
-                        .IsUnique();
-
-                    b.HasIndex("HistoricId");
-
-                    b.ToTable("StatusModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -354,53 +278,21 @@ namespace COE000.Portal.NomeProjeto.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.HistoricModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Models.Entity.HistoricModel", b =>
                 {
-                    b.HasOne("COE334.Portal.FirstData.Models.FunctionTypeModel", "FunctionType")
-                        .WithOne("Historic")
-                        .HasForeignKey("COE334.Portal.FirstData.Models.HistoricModel", "FunctionTypeId")
+                    b.HasOne("COE000.Portal.NomeProjeto.Models.Entity.FunctionTypeModel", "FunctionType")
+                        .WithMany("HistoricGroup")
+                        .HasForeignKey("FunctionTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", "User")
+                    b.HasOne("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", "User")
                         .WithMany("HistoricCollection")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("FunctionType");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.RpaCredentialModel", b =>
-                {
-                    b.HasOne("COE334.Portal.FirstData.Models.EnvironmentModel", "Environment")
-                        .WithOne("RpaCredentialModel")
-                        .HasForeignKey("COE334.Portal.FirstData.Models.RpaCredentialModel", "EnvironmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Environment");
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.StatusModel", b =>
-                {
-                    b.HasOne("COE334.Portal.FirstData.Models.EnvironmentModel", "Environment")
-                        .WithOne("StatusModel")
-                        .HasForeignKey("COE334.Portal.FirstData.Models.StatusModel", "EnvironmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("COE334.Portal.FirstData.Models.HistoricModel", "Historic")
-                        .WithMany("StatusGroup")
-                        .HasForeignKey("HistoricId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Environment");
-
-                    b.Navigation("Historic");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -414,7 +306,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", null)
+                    b.HasOne("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -423,7 +315,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", null)
+                    b.HasOne("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -438,7 +330,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", null)
+                    b.HasOne("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -447,36 +339,21 @@ namespace COE000.Portal.NomeProjeto.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", null)
+                    b.HasOne("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Areas.Identity.Data.IncriseUserModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Areas.Identity.Data.IncriseUserModel", b =>
                 {
                     b.Navigation("HistoricCollection");
                 });
 
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.EnvironmentModel", b =>
+            modelBuilder.Entity("COE000.Portal.NomeProjeto.Models.Entity.FunctionTypeModel", b =>
                 {
-                    b.Navigation("RpaCredentialModel")
-                        .IsRequired();
-
-                    b.Navigation("StatusModel")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.FunctionTypeModel", b =>
-                {
-                    b.Navigation("Historic")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("COE334.Portal.FirstData.Models.HistoricModel", b =>
-                {
-                    b.Navigation("StatusGroup");
+                    b.Navigation("HistoricGroup");
                 });
 #pragma warning restore 612, 618
         }

@@ -89,7 +89,7 @@ namespace COE000.Portal.NomeProjeto.Reposity.Entity
         private static void SetHashBuilder(ModelBuilder builder)
         {
             builder.Entity<HashModel>().ToTable("TB_UserConfig");
-            builder.Entity<HashModel>().Property(h => h.Hash)
+            builder.Entity<HashModel>().Property(h => h.Id)
                 .HasColumnName("ConfigCode")
                 .HasColumnType("UNIQUEIDENTIFIER")
                 .HasDefaultValueSql("NEWID()");

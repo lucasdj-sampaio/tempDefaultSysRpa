@@ -27,14 +27,14 @@ namespace COE334.Portal.FirstData.Controllers
         {
             return View(new { 
                 NotifyModal = new NotifyModel(),
-                UserGroup = await _repository.GetUser()
+                UserGroup = await _repository.GetUser(HttpContext.User.Identity.Name)
             });
         }
 
         public async Task<IActionResult> GetUserWithFilter(SearchModel filter)
             => View("Preference", new {
                 NotifyModal = new NotifyModel(),
-                UserGroup = await _repository.GetUser(filter.InputedCriterie)
+                UserGroup = await _repository.GetUser(HttpContext.User.Identity.Name, filter.InputedCriterie)
             }); 
 
 

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace COE000.Portal.NomeProjeto.Migrations
 {
-    public partial class IdentityMigration : Migration
+    public partial class Identity : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,7 +29,7 @@ namespace COE000.Portal.NomeProjeto.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(1)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Nick = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -48,19 +48,6 @@ namespace COE000.Portal.NomeProjeto.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EnvironmentModel",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EnvironmentName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EnvironmentModel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,33 +171,13 @@ namespace COE000.Portal.NomeProjeto.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "RpaCredentialModel",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Url = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EnvironmentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RpaCredentialModel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RpaCredentialModel_EnvironmentModel_EnvironmentId",
-                        column: x => x.EnvironmentId,
-                        principalTable: "EnvironmentModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HistoricModel",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DateOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Observation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     FunctionTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -220,41 +187,11 @@ namespace COE000.Portal.NomeProjeto.Migrations
                         name: "FK_HistoricModel_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_HistoricModel_FunctionTypeModel_FunctionTypeId",
                         column: x => x.FunctionTypeId,
                         principalTable: "FunctionTypeModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "StatusModel",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DateOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Observation = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HistoricId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EnvironmentId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StatusModel", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_StatusModel_EnvironmentModel_EnvironmentId",
-                        column: x => x.EnvironmentId,
-                        principalTable: "EnvironmentModel",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_StatusModel_HistoricModel_HistoricId",
-                        column: x => x.HistoricId,
-                        principalTable: "HistoricModel",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -301,30 +238,12 @@ namespace COE000.Portal.NomeProjeto.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_HistoricModel_FunctionTypeId",
                 table: "HistoricModel",
-                column: "FunctionTypeId",
-                unique: true);
+                column: "FunctionTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HistoricModel_UserId",
                 table: "HistoricModel",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RpaCredentialModel_EnvironmentId",
-                table: "RpaCredentialModel",
-                column: "EnvironmentId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StatusModel_EnvironmentId",
-                table: "StatusModel",
-                column: "EnvironmentId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StatusModel_HistoricId",
-                table: "StatusModel",
-                column: "HistoricId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -345,19 +264,10 @@ namespace COE000.Portal.NomeProjeto.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "RpaCredentialModel");
-
-            migrationBuilder.DropTable(
-                name: "StatusModel");
+                name: "HistoricModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "EnvironmentModel");
-
-            migrationBuilder.DropTable(
-                name: "HistoricModel");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

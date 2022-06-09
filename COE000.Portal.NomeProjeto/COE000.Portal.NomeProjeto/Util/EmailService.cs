@@ -24,7 +24,7 @@ namespace COE000.Portal.NomeProjeto.Util
 						#[CONTENT]
 					</p>
 					<p style='font-family:Calibri; font-size:14px; color:#1F1589;'>
-						COE (Centro de Excelência em Automação) | FirstData
+						COE (Centro de Excelência em Automação)
 						<br />
 						<span style='color:#F87C46'>Atento Interfile<span>
 					</p>

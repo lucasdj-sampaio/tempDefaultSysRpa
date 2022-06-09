@@ -81,21 +81,23 @@ namespace COE000.Portal.NomeProjeto.Reposity
             }
         }
         
-        public async Task<HashModel> GetHash() 
-            => await _context.DdHash.FirstAsync();
+        public async Task<HashModel> GetHash(Guid token) 
+            => await _context.DdHash
+                .FirstOrDefaultAsync(t => t.Id == token);
 
-        public async Task<ICollection<IncriseUserModel>> GetUser() => 
+        public async Task<ICollection<IncriseUserModel>> GetUser(string currentUserName) => 
             await _context.DbUser
+                .Where(n => n.Id != GetUserIdByName(currentUserName).GetAwaiter().GetResult())
                 .Take(80)
                 .ToListAsync();
 
-        public async Task<ICollection<IncriseUserModel>> GetUser(string userNameFilter) =>
+        public async Task<ICollection<IncriseUserModel>> GetUser(string currentUserName, string userNameFilter) =>
             userNameFilter is not null ?
                 await _context.DbUser
                     .Where(n => n.Nick.Contains(userNameFilter) 
                         || n.Email.Contains(userNameFilter))
                     .ToListAsync()
-                : await GetUser();
+                : await GetUser(currentUserName);
         
         public async Task<string> GetUserIdByName(string name)
             => (await _context.DbUser
@@ -103,7 +105,7 @@ namespace COE000.Portal.NomeProjeto.Reposity
 
         private async Task<RpaCredentialModel> GetUserWithNewEncriptPass(RpaCredentialModel rpaUser)
         {
-            string key = "OTouzOcEjwQ=";
+            string key = "";
 
             return await _context.DbRpaCredential
                 .FromSqlRaw("SELECT CredentionCode, UserName, " +

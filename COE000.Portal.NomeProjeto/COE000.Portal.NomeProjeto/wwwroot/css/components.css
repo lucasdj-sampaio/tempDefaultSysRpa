@@ -29,7 +29,7 @@
   justify-content: center;
 }
 
-#homeScreen #menu .homeScreen, #historicScreen #menu .historicScreen
+#homeScreen #menu .homeScreen, #homeScreen #menu .homeScreen
 , #rpaPreferenceScreen #menu .rpaPreferenceScreen
 , #preferenceScreen #menu .preferenceScreen {
     font-weight: bold;
@@ -179,6 +179,20 @@ li i {
   outline: none;
   font-size: 18px;
   color: white;
+}
+
+/* ----------------------------- NotFundItem ----------------------------- */
+
+.filterNotFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.filterNotFound p {
+    font-weight: bold;
+    margin: 0 10px;
 }
 
 /* ----------------------------- ScrollBar ----------------------------- */
