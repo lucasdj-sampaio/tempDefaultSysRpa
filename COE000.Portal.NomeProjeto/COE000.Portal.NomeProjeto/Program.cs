@@ -3,9 +3,10 @@ using System.Reflection;
 using COE000.Portal.NomeProjeto.Data;
 using COE000.Portal.NomeProjeto.Util;
 using Microsoft.EntityFrameworkCore;
+using COE000.Portal.NomeProjeto.Models;
+using COE000.Portal.NomeProjeto.Reposity;
 using COE000.Portal.NomeProjeto.Reposity.Entity;
 using COE000.Portal.NomeProjeto.Areas.Identity.Data;
-using COE000.Portal.NomeProjeto.Models;
 #endregion
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,7 @@ builder.Services.AddDefaultIdentity<IncriseUserModel>(options =>
 
 builder.Services.AddTransient<EmailService>();
 builder.Services.AddTransient<NotifyModel>();
+builder.Services.AddTransient<DataBaseContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

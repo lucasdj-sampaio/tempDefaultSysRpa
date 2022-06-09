@@ -22,6 +22,9 @@ using Microsoft.Extensions.Logging;
 using COE000.Portal.NomeProjeto.Util;
 using COE000.Portal.NomeProjeto.Models;
 using COE000.Portal.NomeProjeto.Enum;
+using COE000.Portal.NomeProjeto.Models.Entity;
+using COE000.Portal.NomeProjeto.Reposity;
+using COE000.Portal.NomeProjeto.Reposity.Entity;
 
 namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
 {
@@ -33,13 +36,15 @@ namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IncriseUserModel> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly EmailService _emailSender;
+        private readonly EntityRepository _repository;
 
         public RegisterModel(
             UserManager<IncriseUserModel> userManager,
             IUserStore<IncriseUserModel> userStore,
             SignInManager<IncriseUserModel> signInManager,
             ILogger<RegisterModel> logger,
-            EmailService emailSender)
+            EmailService emailSender,
+            DataBaseContext context)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -47,6 +52,7 @@ namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _repository = new(context);
         }
 
         /// <summary>
@@ -111,10 +117,15 @@ namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
             public char Gender { get; set; }
         }
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync(Guid token, string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+            if (!HashSettings.HashIsValid(_repository, token))
+               return RedirectToPage("./Login");
+
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)

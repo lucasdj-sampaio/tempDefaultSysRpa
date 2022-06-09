@@ -1,0 +1,88 @@
+﻿@{
+	ViewData["Title"] = "Preferencias";
+	ViewData["BodyId"] = "preferenceScreen";
+}
+
+<div class="row">
+	<div class="col-sm-12 col-md-4 col-lg-4">
+		<div class="card-header">
+			<h1 class="subtitle">PREFERENCIAS</h1>
+		</div>
+	</div>
+
+	<div class="col-sm-12 col-md-5 col-lg-5 contentCalendare">
+    <form action="post" class="filterForm">
+      <input class="defaultInput" placeholder="Pesquisar"/>
+			
+      <button class="defaultButton searchButton" type="submit"><i class='bx bx-search'></i></button>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12 col-md-9 col-lg-9 card-body backGroundItem scrollCard">
+		<div class="userCards">
+			<div class="col-sm-12 col-md-4 col-lg-4 profileCard shadow">
+				<div class="backgroundIconUser">
+					<i class="bx bxs-user-circle"></i>
+				</div>
+
+				<div class="buttonPositon">
+					<div class="editButton" onClick()>
+						<i class="bx bxs-pencil"></i>
+					</div>
+				</div>
+
+				<div class="userCardContext">
+					<p>
+						<label class="boldedGreyText">Nome: </label>
+						<label>Lucas</label>	
+					</p>
+					
+					<p>
+						<label class="boldedGreyText">Email: </label>
+						<label>lucasdejesussampaio@gmail.com</label>
+					</p>
+
+					<div class="enOrPermRow">
+							<label>Permissão:</label>
+						<div class="envOrPermStatus">
+							<i class="bx bxs-user-detail"></i>
+							<label>Básica</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12 col-md-3 col-lg-3">
+		<div class="row">
+			<div class="col-12 pagesContextCard">
+				<div class="moduloCardHeader">
+					<h3 class="moduloTitle">UM SISTEMA EM COLABORAÇÃO</h3>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<p class="decoratedText">
+							Aqui é por onde toda a magica acontece, 
+							controle os acessos e ferramentas que 
+							determinado usuário pode executar, 
+							de forma segura e precisa!
+							do robô.
+						</p>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12">
+						<div class="contextPicture">
+							<img src="~/resource/AdmUDraw.svg" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

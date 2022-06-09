@@ -16,6 +16,8 @@ namespace COE000.Portal.NomeProjeto.Reposity.Entity
         public DbSet<EnvironmentModel> DbEnvironment { get; set; }
 
         public DbSet<HistoricModel> DbHistoric { get; set; }
+
+        public DbSet<HashModel> DdHash { get; set; }
         
         public DbSet<RpaCredentialModel> DbRpaCredential { get; set; }
 
@@ -30,6 +32,8 @@ namespace COE000.Portal.NomeProjeto.Reposity.Entity
             SetHistoricBuilder(builder);
 
             SetIncreaseUserBuilder(builder);
+
+            SetHashBuilder(builder);
 
             builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
@@ -82,12 +86,21 @@ namespace COE000.Portal.NomeProjeto.Reposity.Entity
                 .HasForeignKey(fk => fk.EnvironmentId);
         }
 
+        private static void SetHashBuilder(ModelBuilder builder)
+        {
+            builder.Entity<HashModel>().ToTable("TB_UserConfig");
+            builder.Entity<HashModel>().Property(h => h.Hash)
+                .HasColumnName("ConfigCode")
+                .HasColumnType("UNIQUEIDENTIFIER")
+                .HasDefaultValueSql("NEWID()");
+        }
+
         private static void SetHistoricBuilder(ModelBuilder builder)
         {
-            builder.Entity<HistoricModel>().ToTable("TB_Historic");
+            builder.Entity<HistoricModel>().ToTable("TB_Legacy");
 
             builder.Entity<HistoricModel>().Property(e => e.Id)
-                .HasColumnName("HistoricCode")
+                .HasColumnName("LegacyCode")
                 .HasColumnType("UNIQUEIDENTIFIER")
                 .HasDefaultValueSql("NEWID()");
             

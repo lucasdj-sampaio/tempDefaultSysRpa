@@ -1,10 +1,10 @@
 #region - Imports
-using COE000.Portal.NomeProjeto.Enum;
-using COE000.Portal.NomeProjeto.Util;
 using Microsoft.EntityFrameworkCore;
+using COE000.Portal.NomeProjeto.Enum;
 using COE000.Portal.NomeProjeto.Models;
 using COE000.Portal.NomeProjeto.Models.Entity;
 using COE000.Portal.NomeProjeto.Reposity.Entity;
+using COE000.Portal.NomeProjeto.Areas.Identity.Data;
 #pragma warning disable CS8602, CS8603, CS8604, IDE1006
 #endregion
 
@@ -80,7 +80,23 @@ namespace COE000.Portal.NomeProjeto.Reposity
                 return new(EModalNotification.Error) { Message = ex.Message };
             }
         }
+        
+        public async Task<HashModel> GetHash() 
+            => await _context.DdHash.FirstAsync();
 
+        public async Task<ICollection<IncriseUserModel>> GetUser() => 
+            await _context.DbUser
+                .Take(80)
+                .ToListAsync();
+
+        public async Task<ICollection<IncriseUserModel>> GetUser(string userNameFilter) =>
+            userNameFilter is not null ?
+                await _context.DbUser
+                    .Where(n => n.Nick.Contains(userNameFilter) 
+                        || n.Email.Contains(userNameFilter))
+                    .ToListAsync()
+                : await GetUser();
+        
         public async Task<string> GetUserIdByName(string name)
             => (await _context.DbUser
                     .FirstOrDefaultAsync(u => u.UserName == name)).Id;
