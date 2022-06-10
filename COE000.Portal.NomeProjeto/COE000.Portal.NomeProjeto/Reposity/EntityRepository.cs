@@ -130,7 +130,7 @@ namespace COE000.Portal.NomeProjeto.Reposity
         {
             try
             {
-                var user = await _context.DbUser.FindAsync(id);
+                var user = await _context.DbUser.FirstOrDefaultAsync(i => i.Id == id.ToString());
                 _context.DbUser.Remove(user);
 
                 if (autoCommit)

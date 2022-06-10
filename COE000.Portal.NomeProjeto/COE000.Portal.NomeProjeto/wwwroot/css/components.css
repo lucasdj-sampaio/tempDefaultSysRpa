@@ -154,6 +154,7 @@ li i {
 
 .loadIconRow i {
   font-size: 70px;
+  color: var(--themeColor2)
 }
 
 /* --------------------------- RpaUserUpdateModal --------------------------- */

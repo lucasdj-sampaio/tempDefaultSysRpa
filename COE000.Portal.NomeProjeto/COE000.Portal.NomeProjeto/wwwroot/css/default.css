@@ -11,7 +11,7 @@ p, a, textarea, h1, h2, h3, h4, h5, h6, span, label, input, option {
 }
 
 .defaultButton:hover {
-    background-color: var(--themeColor2);
+    background-color: var(--themeColor2) !important;
 }
 
 .defaultInput {

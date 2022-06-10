@@ -35,8 +35,6 @@
     overflow-x: hidden;
 }
 
-/* Index */
-
 .card-body {
     border-radius: 15px;
     padding: 2px 9px;
@@ -48,23 +46,6 @@
     border-radius: 15px;
     padding: 12px 15px;
     margin: 13px 0;
-}
-
-.titleCard {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-}
-
-.titleCard i {
-    font-size: 26px;
-    margin-right: 5px;
-    color: #333333;
-}
-
-.filtredDate {
-    font-weight: bold;
 }
 
 /*=============================================================================*/
@@ -143,14 +124,14 @@
     font-size: 13px;
 }
 
-.enOrPermRow {
+.envRow {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 34px;
 }
 
-.envOrPermStatus {
+.envStatus {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,192 +141,16 @@
     padding: 5px 8px;
 }
 
-.envOrPermStatus i {
+.envStatus i {
     color: white;
     font-size: 14px;
     margin-right: 5px;
 }
 
-.envOrPermStatus label {
+.envStatus label {
     font-size: 12px;
     color: white;
 }
-
-/*=============================================================================*/
-
-.moduloCardHeader {
-    margin-top: 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent !important;
-    padding: 0 25px;
-}
-
-.moduloTitle {
-    font-size: 17px;
-    color: #FF7B00;
-}
-
-.pagesContextCard {
-    padding: 10px 16px;
-    margin-top: 5px;
-    background-color: white;
-    border-radius: 15px;
-}
-
-.decoratedText {
-    font-size: 16px;
-    text-align: justify;
-}
-
-.contextPicture {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.contextPicture img {
-    width: -webkit-fill-available;
-    height: auto;
-}
-
-/* ------------------------------ index.cshtml ------------------------------ */
-
-.secundItem {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.inputedUserName {
-    font-size: 14px;
-    color: rgb(80, 79, 79);
-}
-
-.fileId {
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: underline;
-    color: black;
-}
-
-.statusItem {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.statusDiv {
-    display: flex;
-    align-items: center;
-}
-
-.statusDiv label {
-    margin-bottom: 0px;
-    margin-right: 3px;
-}
-
-.statusDiv a {
-    font-size: 14px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    padding: 6px 8px;
-    margin: 0 10px;
-    border-radius: 10px;
-}
-
-.small-btn-Processando {
-    background-color: rgb(80, 79, 79);
-}
-
-.small-btn-Concluído {
-    background-color: var(--error);
-}
-
-.small-btn-Erro {
-    background-color: var(--error);
-}
-
-.small-btn-download {
-    background-color: var(--themeColor);
-    border: none;
-    font-size: 14px;
-    font-weight: bold;
-    color:white;
-    border-radius: 10px;
-    padding: 6px 8px;
-}
-
-.small-btn-download:hover {
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.small-btn-download i {
-    margin-right: 5px;
-}
-
-.homeModuloCardBody {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 0px;
-    position: relative;
-}
-
-.addFileSvg {
-    width: 105px;
-}
-
-.addFileButton {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 27px;
-    height: 27px;
-    background-color: #FFBC6E;
-    border: none;
-    border-radius: 50px;
-    margin: 37px 0px 0px 47px;
-}
-
-.addFileButton:hover {
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.addFileButton i {
-    color: white;
-    font-size: 15px;
-}
-
-.homeContextCard {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.homePicture {
-    width: 120px;
-}
-
-@media (max-width: 767px) {
-    .card-header{
-        text-align: center;
-        justify-content: center;
-    }
-
-    .contentCalendare{
-        justify-content: center;
-    }
-}
-
-/* --------------------------- preference.cshtml ---------------------------*/
-
-.preferencePicture {
-    height: 256px;
- }
 
 /* ---------------------------- historic.cshtml ----------------------------*/
 
@@ -355,10 +160,4 @@
     border-radius: 5px;
     min-width: 260px;
     text-align-last: center;
-}
-
-.historicDate {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 }

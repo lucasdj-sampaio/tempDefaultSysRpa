@@ -9,16 +9,6 @@ body {
     justify-content: center;
 }
 
-.containerImage img {
-    max-width: Calc(100vw - 150%);
-    width: auto;
-    min-height: Calc(100vh);
-    height: auto;
-    box-shadow: 9px 0px 24px 20px rgba(0, 0, 0, 0.2);
-    padding: 0;
-    opacity: 76%;
-}
-
 .groupLogo {
     margin-top: 12%;
 }
