@@ -11,7 +11,7 @@ using COE000.Portal.NomeProjeto.Reposity.Entity;
 #pragma warning disable
 #endregion
 
-namespace COE334.Portal.FirstData.Controllers
+namespace COE000.Portal.NomeProjeto.Controllers
 {
     [Authorize]
     public class PreferenceController : Controller
