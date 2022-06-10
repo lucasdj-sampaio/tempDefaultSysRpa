@@ -13,7 +13,7 @@
 							@using (Html.BeginForm("InviteUser", "Preference"
 								, FormMethod.Post, new { @class="modalFormData", autocomplete="off" }))
 							{
-								<input class="defaultInput" placeholder="E-mail" type="text" name="userMail"/>
+								<input class="defaultInput" placeholder="E-mail" type="text" name="userMail" required/>
 
 								<div class="row submitButton">
 									<input class="btn btn-outline-success" value="Convidar" type="submit"/>

@@ -103,11 +103,14 @@ namespace COE000.Portal.NomeProjeto.Reposity
         }
 
         public async Task<HashModel> GetLastHashCreated()
-            => await _context.DbHash.FirstOrDefaultAsync();
+            => await _context.DbHash
+                .OrderByDescending(d => d.DateOn)
+                .FirstOrDefaultAsync();
 
         public async Task<HashModel> GetHash(Guid token) 
             => await _context.DbHash
-                .FirstOrDefaultAsync(t => t.Id == token);
+                .FirstOrDefaultAsync(t => t.Id == token 
+                    && t.DateOn >= DateTime.Now.AddHours(-1));
 
         public async Task<ICollection<IncriseUserModel>> GetUser(string currentUserName) => 
             await _context.DbUser

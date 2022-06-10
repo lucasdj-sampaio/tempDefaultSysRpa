@@ -6,7 +6,7 @@ namespace COE000.Portal.NomeProjeto.Util
 {
     public static class HashSettings
     {
-        public static bool HashIsValid(EntityRepository repository, Guid currentHash) => 
-            currentHash == (repository.GetHash(currentHash).GetAwaiter()).GetResult().Id;
+        public static bool HashIsValid(EntityRepository repository, Guid currentHash)
+            => (repository.GetHash(currentHash).GetAwaiter()).GetResult() is not null;
     }
 }

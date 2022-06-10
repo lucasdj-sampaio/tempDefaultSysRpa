@@ -59,20 +59,18 @@ namespace COE334.Portal.FirstData.Controllers
             {
                 await _repository.CreateHashCode(true);
 
-                var callbackUrl = Url.Page($"/Account/Register",
-                pageHandler: null,
-                values: new { 
-                    token = await _repository.GetLastHashCreated()
-                    },
-                protocol: Request.Scheme);
+                var callBackUrl = @$"{ HttpContext.Request.Host }/Identity/Account/Register?token={
+                        (await _repository.GetLastHashCreated()).Id 
+                    }";
             
                 await _emailSender.SendAsync(userMail,
                     "Parece que você recebeu um convite!",
                     @$"<p style='font-family:Calibri; font-size:16px; color:#1F1589;'>Oi, {userMail}!<br>
                     Alguém te convidou para fazer parte do nosso sistema
                     <br><br>
-                    <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Clique aqui para realizar seu cadastro!</a>
+                    <a href='{HtmlEncoder.Default.Encode(callBackUrl)}'>Clique aqui para realizar seu cadastro!</a>
                     <br><br>
+                    Lembrando a você que o token de convite é valido durante 1h!
                     Att,
                     </p>");
 

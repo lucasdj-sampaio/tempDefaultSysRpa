@@ -117,12 +117,12 @@ namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
             public char Gender { get; set; }
         }
 
-        public async Task<IActionResult> OnGetAsync(Guid token, string returnUrl = null)
+        public async Task<IActionResult> OnGetAsync(string token = null, string returnUrl = null)
         {
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-            if (!HashSettings.HashIsValid(_repository, token))
+            if (String.IsNullOrEmpty(token) || !HashSettings.HashIsValid(_repository, Guid.Parse(token)))
                return RedirectToPage("./Login");
 
             return Page();
