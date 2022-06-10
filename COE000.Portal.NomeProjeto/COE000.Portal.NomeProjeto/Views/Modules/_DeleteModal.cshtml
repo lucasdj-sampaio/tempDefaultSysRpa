@@ -1,0 +1,28 @@
+<div class="modal fade bd-example-modal-lg" id="deleteModal" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="headerModal headerPostModal">
+				<h4>Tem certeza que deseja deletar esse usuário?</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body modalBodyBackground">
+				<div class="modalReturn">
+					<div class="row">
+						<div class="col-12">
+							@using (Html.BeginForm("RemoveUser", "Preference"
+								, FormMethod.Post, new { @class="modalFormData", autocomplete="off" }))
+							{
+								<input id="userId" type="text" name="id" hidden/>
+
+								<div class="row submitButton">
+									<input class="btn btn-outline-danger" value="Deletar" type="submit"/>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

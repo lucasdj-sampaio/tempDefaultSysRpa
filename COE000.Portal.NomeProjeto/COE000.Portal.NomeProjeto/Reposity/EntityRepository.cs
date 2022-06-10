@@ -81,8 +81,32 @@ namespace COE000.Portal.NomeProjeto.Reposity
             }
         }
         
+        public async Task<NotifyModel> CreateHashCode(bool autoCommit = false)
+        {
+            try
+            {
+                HashModel newCode = new() {
+                    DateOn = DateTime.Now
+                };
+
+                await _context.DbHash.AddAsync(newCode);
+
+                if (autoCommit)
+                    await DbSaveChanges();
+
+                return new(EModalNotification.Sucess);
+            }
+            catch (Exception ex)
+            {
+                return new(EModalNotification.Error) { Message = ex.Message };
+            }
+        }
+
+        public async Task<HashModel> GetLastHashCreated()
+            => await _context.DbHash.FirstOrDefaultAsync();
+
         public async Task<HashModel> GetHash(Guid token) 
-            => await _context.DdHash
+            => await _context.DbHash
                 .FirstOrDefaultAsync(t => t.Id == token);
 
         public async Task<ICollection<IncriseUserModel>> GetUser(string currentUserName) => 
@@ -99,6 +123,24 @@ namespace COE000.Portal.NomeProjeto.Reposity
                     .ToListAsync()
                 : await GetUser(currentUserName);
         
+        public async Task<NotifyModel> DeleteUser(Guid id, bool autoCommit = false)
+        {
+            try
+            {
+                var user = await _context.DbUser.FindAsync(id);
+                _context.DbUser.Remove(user);
+
+                if (autoCommit)
+                    await DbSaveChanges();
+
+                return new(EModalNotification.Sucess) { Message = "Usuário deletado com sucesso!" };
+            }
+            catch (Exception ex)
+            {
+                return new(EModalNotification.Error) { Message = ex.Message };
+            }
+        }
+
         public async Task<string> GetUserIdByName(string name)
             => (await _context.DbUser
                     .FirstOrDefaultAsync(u => u.UserName == name)).Id;

@@ -161,7 +161,7 @@ namespace COE000.Portal.NomeProjeto.Areas.Identity.Pages.Account
                         },
                         protocol: Request.Scheme);
 
-                    await _emailSender.SendAsync(Input.Email, "Confirmação de e-mail | Sistema FirstData",
+                    await _emailSender.SendAsync(Input.Email, "Confirmação de e-mail",
                         @$"<p style='font-family:Calibri; font-size:16px; color:#1F1589;'>Oi, {Input.Nick}!<br>
                         Sua conta está quase pronta. Para ativá-la, por favor confirme o seu<br>
                         endereço de email clicando no link abaixo.

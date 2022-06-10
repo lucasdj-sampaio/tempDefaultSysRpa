@@ -18,3 +18,12 @@
 
     openModal(modalId);
 };
+
+function fillDeleteModal(userId, modalId) {
+    const hiddenId = document.getElementById('userId');
+
+    hiddenId.setAttribute('value', '');
+    hiddenId.setAttribute('value', userId);
+    
+    openModal(modalId);
+}

@@ -90,7 +90,7 @@ li i {
 }
 
 .modalBodyBackground {
-  background-color: var(--modalBackground);
+  background-color: var(--mainBackground);
 }
 
 .modalFormData input {

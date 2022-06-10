@@ -17,7 +17,7 @@ namespace COE000.Portal.NomeProjeto.Reposity.Entity
 
         public DbSet<HistoricModel> DbHistoric { get; set; }
 
-        public DbSet<HashModel> DdHash { get; set; }
+        public DbSet<HashModel> DbHash { get; set; }
         
         public DbSet<RpaCredentialModel> DbRpaCredential { get; set; }
 

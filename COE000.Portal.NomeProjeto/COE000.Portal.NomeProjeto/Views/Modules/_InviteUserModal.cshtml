@@ -1,0 +1,28 @@
+<div class="modal fade bd-example-modal-lg" id="inviteUserModal" tabindex="-1" role="dialog"
+	aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="headerModal headerPostModal">
+				<h4>Convide um novo usuário!</h4>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body modalBodyBackground">
+				<div class="modalReturn">
+					<div class="row">
+						<div class="col-12">
+							@using (Html.BeginForm("InviteUser", "Preference"
+								, FormMethod.Post, new { @class="modalFormData", autocomplete="off" }))
+							{
+								<input class="defaultInput" placeholder="E-mail" type="text" name="userMail"/>
+
+								<div class="row submitButton">
+									<input class="btn btn-outline-success" value="Convidar" type="submit"/>
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

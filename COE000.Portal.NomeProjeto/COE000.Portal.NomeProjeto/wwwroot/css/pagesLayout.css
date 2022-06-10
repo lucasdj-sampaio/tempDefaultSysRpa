@@ -1,7 +1,11 @@
+body {
+   background-color: var(--mainBackground);
+}
+
 .menuNav {
    position: static !important;
    padding: 3px 10px;
-   background-color: var(--backGround) !important;
+   background-color: var(--secundaryBackground) !important;
 }
 
 .menuNav img {
